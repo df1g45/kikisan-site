@@ -1,5 +1,5 @@
 import React from "react";
-import { useEffect, Fragment, useState } from "react";
+import { Fragment, useState } from "react";
 import { useForm } from "react-hook-form";
 import { Listbox, Transition } from "@headlessui/react";
 import {
@@ -12,9 +12,10 @@ import * as ExcelJS from "exceljs";
 import { Monitoring } from "@/types/Monitoring";
 import { Stats } from "./Stats";
 import Charts from "./Charts";
+import Script from "next/script";
 
 const people = [
-  { name: "Metode httpx", value: "httpx", link: "http://127.0.0.1:8000/httpx" },
+  { name: "Metode Httpx", value: "httpx", link: "http://127.0.0.1:8000/httpx" },
   {
     name: "Metode Async Httpx",
     value: "asynchttpx",
@@ -62,33 +63,38 @@ function Form() {
 
       if (response.ok) {
         const responseData = await response.json();
-        console.log(responseData);
+        if (responseData.hasil) {
+          console.log(responseData);
 
-        const monitorings: Monitoring = {
-          cpu_core: responseData.cpu_core,
-          cpu_list: responseData.cpu_list,
-          cpu_type: responseData.cpu_type,
-          durasi: responseData.durasi,
-          jumlah_data: responseData.jumlah_data,
-          keyword: responseData.keyword,
-          metode: responseData.metode,
-          pagination: responseData.pagination,
-          paket_download: responseData.paket_download,
-          paket_internet: responseData.paket_internet,
-          paket_upload: responseData.paket_upload,
-          ram_list: responseData.ram_list,
-          ram_tersedia: responseData.ram_tersedia,
-          ram_total: responseData.ram_total,
-          waktu_list: responseData.waktu_list,
-        };
+          const monitorings: Monitoring = {
+            cpu_core: responseData.cpu_core,
+            cpu_list: responseData.cpu_list,
+            cpu_type: responseData.cpu_type,
+            durasi: responseData.durasi,
+            jumlah_data: responseData.jumlah_data,
+            keyword: responseData.keyword,
+            metode: responseData.metode,
+            pagination: responseData.pagination,
+            paket_download: responseData.paket_download,
+            paket_internet: responseData.paket_internet,
+            paket_upload: responseData.paket_upload,
+            ram_list: responseData.ram_list,
+            ram_tersedia: responseData.ram_tersedia,
+            ram_total: responseData.ram_total,
+            waktu_list: responseData.waktu_list,
+          };
 
-        setResult(monitorings);
-        // Lakukan tindakan lain dengan responseData
-        handleExportToExcel(responseData);
-        window.scroll({
-          top: document.body.scrollHeight,
-          behavior: "smooth",
-        });
+          setResult(monitorings);
+          // Lakukan tindakan lain dengan responseData
+          setTimeout(() => {
+            window.scroll({
+              top: document.body.scrollHeight,
+              behavior: "smooth",
+            });
+            handleExportToExcel(responseData);
+            onConfettiLoad();
+          }, 1000);
+        }
       } else {
         console.error("Request failed with status:", response.status);
         // Lakukan penanganan kesalahan jika diperlukan
@@ -100,24 +106,15 @@ function Form() {
     setIsLoading(false);
   };
 
-  useEffect(() => {
-    // Scroll otomatis ketika result berubah
-    if (result) {
-      window.scroll({
-        top: document.body.scrollHeight,
-        behavior: "smooth",
-      });
-    }
-  }, [result]);
-
   return (
     <>
-      <div className="min-h-screen bg-white flex justify-center items-center">
+      <Script src="https://cdn.jsdelivr.net/npm/tsparticles-confetti@2.9.3/tsparticles.confetti.bundle.min.js" />
+      <div className="min-h-screen bg-gray-100 flex justify-center items-center">
         <div className="container mx-auto bg-gray-900 rounded-lg p-14">
           <h1 className="text-center font-bold text-green-500 text-4xl">
             Scraping yang optimal, gunakan Kikisan.site!
           </h1>
-          <p className="mx-auto font-normal text-center text-white text-base my-6 max-w-5xl">
+          <p className="mx-auto font-normal text-center text-gray-100 text-base my-6 max-w-5xl">
             Kikisan.site adalah sebuah platform yang menyediakan metode scraping
             yang efektif dan efisien untuk mengambil data produk pada platform
             Tokopedia. Dengan menggunakan Kikisan.site, Anda dapat menguji
@@ -132,12 +129,12 @@ function Form() {
               <Listbox value={selected} onChange={setSelected}>
                 <div className="relative w-1/3">
                   <Listbox.Button className="relative w-full cursor-default rounded-l-lg bg-green-500  py-3 pl-3 pr-10 text-left shadow-xl focus:outline-none focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-orange-300 sm:text-sm">
-                    <span className="block truncate text-white font-bold">
+                    <span className="block truncate text-gray-100 font-bold">
                       {selected.name}
                     </span>
                     <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
                       <ChevronUpDownIcon
-                        className="h-5 w-5 text-white"
+                        className="h-5 w-5 text-gray-100"
                         aria-hidden="true"
                       />
                     </span>
@@ -148,7 +145,7 @@ function Form() {
                     leaveFrom="opacity-100"
                     leaveTo="opacity-0"
                   >
-                    <Listbox.Options className="absolute mt-1 max-h-60 w-full overflow-auto rounded-md bg-white text-gray-800 py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
+                    <Listbox.Options className="absolute mt-1 max-h-60 w-full overflow-auto rounded-md bg-gray-100 text-gray-800 py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
                       {people.map((person, personIdx) => (
                         <Listbox.Option
                           key={personIdx}
@@ -345,6 +342,43 @@ const handleExportToExcel = (data: any) => {
     link.download = data.keyword + ".xlsx";
     link.click();
   });
+};
+
+const onConfettiLoad = () => {
+  const duration = 10 * 1000;
+  const animationEnd = Date.now() + duration;
+
+  const randomInRange = (min: number, max: number) => {
+    return Math.random() * (max - min) + min;
+  };
+
+  (function frame() {
+    const timeLeft = animationEnd - Date.now();
+
+    (window as any).confetti({
+      particleCount: 100, // Jumlah partikel konfeti yang dihasilkan
+      startVelocity: 30, // Kecepatan awal partikel
+      ticks: Math.max(200, 500 * (timeLeft / duration)),
+      origin: { x: 0.5, y: 1 }, // Posisi awal konfeti (tengah bawah)
+      colors: [
+        "#26ccff",
+        "#a25afd",
+        "#ff5e7e",
+        "#88ff5a",
+        "#fcff42",
+        "#ffa62d",
+        "#ff36ff",
+      ],
+      shapes: ["square", "circle"],
+      gravity: randomInRange(0.4, 0.6),
+      scalar: randomInRange(0.8, 1.2),
+      drift: randomInRange(-0.1, 0.1),
+    });
+
+    if (timeLeft > 0) {
+      requestAnimationFrame(frame);
+    }
+  })();
 };
 
 export default Form;

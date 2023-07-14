@@ -32,7 +32,7 @@ function Charts({ monitoring }: Props) {
   const generateData = () => {
     if (monitoring) {
       const dates = {
-        internet: {
+        bandwidth: {
           total: monitoring.paket_internet,
           data: {
             labels: monitoring.waktu_list,
@@ -56,12 +56,12 @@ function Charts({ monitoring }: Props) {
 
       const data: ChartData[] = [
         {
-          label: "Internet",
+          label: "Bandwidth",
           data: {
-            labels: dates.internet.data.labels,
-            download: dates.internet.data.download,
-            upload: dates.internet.data.upload,
-            total: dates.internet.total,
+            labels: dates["bandwidth"].data.labels,
+            download: dates["bandwidth"].data.download,
+            upload: dates["bandwidth"].data.upload,
+            total: dates["bandwidth"].total,
           },
         },
         {
@@ -136,24 +136,43 @@ function Charts({ monitoring }: Props) {
                     } else {
                       return (value / 1073741824).toFixed(1) + " GB/s";
                     }
-                  } else if (selectedOption === 1) {
+                  } else if (selectedOption === 1 || selectedOption === 2) {
                     const value =
                       typeof tickValue === "string"
                         ? parseFloat(tickValue)
                         : tickValue;
-                    if (value) {
-                      return value + " %";
-                    }
-                  } else if (selectedOption === 2) {
-                    // Format for 30 Days
-                    const value =
-                      typeof tickValue === "string"
-                        ? parseFloat(tickValue)
-                        : tickValue;
-                    if (value) {
-                      return value + " %";
-                    }
+                    return value + " %";
                   }
+                },
+              },
+            },
+          },
+          plugins: {
+            tooltip: {
+              callbacks: {
+                label: function (context) {
+                  const label = context.dataset.label || "";
+                  const value = context.parsed.y || 0;
+
+                  if (selectedOption === 0) {
+                    if (value < 1024) {
+                      return label + ": " + value + " B/s";
+                    } else if (value < 1048576) {
+                      return label + ": " + (value / 1024).toFixed(1) + " KB/s";
+                    } else if (value < 1073741824) {
+                      return (
+                        label + ": " + (value / 1048576).toFixed(1) + " MB/s"
+                      );
+                    } else {
+                      return (
+                        label + ": " + (value / 1073741824).toFixed(1) + " GB/s"
+                      );
+                    }
+                  } else if (selectedOption === 1 || selectedOption === 2) {
+                    return label + ": " + value + "%";
+                  }
+
+                  return "";
                 },
               },
             },
@@ -221,7 +240,7 @@ function Charts({ monitoring }: Props) {
 
   return (
     <div className="min-w-screen min-h-screen bg-gray-900 flex items-center justify-center px-5 py-5">
-      <div className="bg-gray-800 text-gray-500 rounded shadow-xl py-5 px-5 w-full lg:w-3/4">
+      <div className="bg-gray-800 text-gray-500 rounded shadow-xl py-5 px-5 w-full md:w-5/6">
         <div className="flex flex-wrap items-end">
           <div className="flex-1">
             <h3 className="text-lg font-semibold leading-tight">
