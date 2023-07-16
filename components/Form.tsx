@@ -6,6 +6,7 @@ import {
   CheckIcon,
   ChevronUpDownIcon,
   MagnifyingGlassIcon,
+  ScissorsIcon,
 } from "@heroicons/react/24/solid";
 import Button from "./Button";
 import * as ExcelJS from "exceljs";
@@ -14,6 +15,7 @@ import { Stats } from "./Stats";
 import Charts from "./Charts";
 import Script from "next/script";
 
+const pilih = [{ name: "Pilih Metode", value: "", link: "" }];
 const people = [
   { name: "Metode Httpx", value: "httpx", link: "http://127.0.0.1:8000/httpx" },
   {
@@ -27,7 +29,7 @@ const people = [
     link: "http://127.0.0.1:8000/threadhttpx",
   },
   {
-    name: "Metode Playwright",
+    name: "Metode Async Playwright",
     value: "playwright",
     link: "http://127.0.0.1:8000/playwright",
   },
@@ -44,7 +46,7 @@ const people = [
 ];
 
 function Form() {
-  const [selected, setSelected] = useState(people[0]);
+  const [selected, setSelected] = useState(pilih[0]);
   const [isLoading, setIsLoading] = useState(false);
   const { register, handleSubmit } = useForm();
   const [result, setResult] = useState<Monitoring | null>(null);
@@ -63,12 +65,13 @@ function Form() {
 
       if (response.ok) {
         const responseData = await response.json();
-        if (responseData.hasil) {
+        if (responseData.hasil && responseData.hasil.length > 0) {
           console.log(responseData);
 
           const monitorings: Monitoring = {
             cpu_core: responseData.cpu_core,
             cpu_list: responseData.cpu_list,
+            cpu_rata: responseData.cpu_rata,
             cpu_type: responseData.cpu_type,
             durasi: responseData.durasi,
             jumlah_data: responseData.jumlah_data,
@@ -79,6 +82,7 @@ function Form() {
             paket_internet: responseData.paket_internet,
             paket_upload: responseData.paket_upload,
             ram_list: responseData.ram_list,
+            ram_rata: responseData.ram_rata,
             ram_tersedia: responseData.ram_tersedia,
             ram_total: responseData.ram_total,
             waktu_list: responseData.waktu_list,
@@ -127,7 +131,7 @@ function Form() {
           <form onSubmit={handleSubmit(onSubmit)}>
             <div className="flex items-center">
               <Listbox value={selected} onChange={setSelected}>
-                <div className="relative w-1/3">
+                <div className="relative w-2/5">
                   <Listbox.Button className="relative w-full cursor-default rounded-l-lg bg-green-500  py-3 pl-3 pr-10 text-left shadow-xl focus:outline-none focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-orange-300 sm:text-sm">
                     <span className="block truncate text-gray-100 font-bold">
                       {selected.name}
@@ -204,7 +208,7 @@ function Form() {
                     id="pagination"
                     className="block w-24 shadow-md rounded-md text-center font-semibold border-0 py-1 pl-3 pr-3 mr-4 text-gray-800 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-700 sm:text-sm sm:leading-6"
                     placeholder="0"
-                    defaultValue={1}
+                    defaultValue={0}
                     required
                     {...register("pages", { valueAsNumber: true })}
                     onChange={(e) => {
@@ -219,7 +223,13 @@ function Form() {
                 </div>
               </div>
 
-              <Button type="submit" isLoading={isLoading} />
+              <Button
+                type="submit"
+                isLoading={isLoading}
+                style="bg-green-500 text-gray-100 bg-green-500 rounded-lg border border-green-600 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"
+                icon={<ScissorsIcon className="w-6 h-6" />}
+                loadingStyle="h-5 w-5"
+              />
             </div>
           </form>
           {/* {JSON.stringify(result)} */}
@@ -252,44 +262,49 @@ const handleExportToExcel = (data: any) => {
   // Mengisi header dan data ke worksheet
   const headerRow = worksheet.getRow(1);
   headerRow.height = 50; // Mengatur ukuran tinggi baris header menjadi 30
-  Object.keys(dataWithNo[0]).forEach((header, index) => {
-    const cell = headerRow.getCell(index + 1);
-    cell.value = header;
-    cell.fill = {
-      type: "pattern",
-      pattern: "solid",
-      fgColor: { argb: "ff41b549" }, // Background color
-    };
-    cell.border = {
-      top: { style: "medium" },
-      left: { style: "medium" },
-      bottom: { style: "medium" },
-      right: { style: "medium" },
-    };
-    cell.alignment = {
-      wrapText: true,
-      vertical: "middle",
-      horizontal: "center",
-    };
-    cell.font = {
-      bold: true,
-      color: { argb: "FFFFFFFF" }, // White color
-    };
-    // Menentukan ukuran kolom header
-    if (header === "No") {
-      worksheet.getColumn(index + 1).width = 10; // Ukuran lebih kecil untuk kolom "No"
-    } else if (
-      header === "produk_harga" ||
-      header === "produk_terjual" ||
-      header === "produk_rating" ||
-      header === "produk_diskon" ||
-      header === "produk_harga_sebelum_diskon"
-    ) {
-      worksheet.getColumn(index + 1).width = 20; // Ukuran lebih kecil untuk kolom "No"
-    } else {
-      worksheet.getColumn(index + 1).width = 50; // Ukuran default untuk kolom lainnya
+  if (dataWithNo && dataWithNo.length > 0) {
+    const headers = Object.keys(dataWithNo[0]);
+    if (headers.length > 0) {
+      headers.forEach((header, index) => {
+        const cell = headerRow.getCell(index + 1);
+        cell.value = header;
+        cell.fill = {
+          type: "pattern",
+          pattern: "solid",
+          fgColor: { argb: "ff41b549" }, // Background color
+        };
+        cell.border = {
+          top: { style: "medium" },
+          left: { style: "medium" },
+          bottom: { style: "medium" },
+          right: { style: "medium" },
+        };
+        cell.alignment = {
+          wrapText: true,
+          vertical: "middle",
+          horizontal: "center",
+        };
+        cell.font = {
+          bold: true,
+          color: { argb: "FFFFFFFF" }, // White color
+        };
+        // Menentukan ukuran kolom header
+        if (header === "No") {
+          worksheet.getColumn(index + 1).width = 10; // Ukuran lebih kecil untuk kolom "No"
+        } else if (
+          header === "produk_harga" ||
+          header === "produk_terjual" ||
+          header === "produk_rating" ||
+          header === "produk_diskon" ||
+          header === "produk_harga_sebelum_diskon"
+        ) {
+          worksheet.getColumn(index + 1).width = 20; // Ukuran lebih kecil untuk kolom "No"
+        } else {
+          worksheet.getColumn(index + 1).width = 50; // Ukuran default untuk kolom lainnya
+        }
+      });
     }
-  });
+  }
 
   dataWithNo.forEach((item: any, rowIndex: any) => {
     const row = worksheet.addRow(Object.values(item));
@@ -327,9 +342,11 @@ const handleExportToExcel = (data: any) => {
   });
 
   // Mengatur lebar kolom otomatis
-  worksheet.columns.forEach((column) => {
-    column.width = Math.max(5, column.width!);
-  });
+  if (worksheet.columns) {
+    worksheet.columns.forEach((column) => {
+      column.width = Math.max(5, column.width!);
+    });
+  }
 
   // Menghasilkan file Excel
   workbook.xlsx.writeBuffer().then((buffer) => {

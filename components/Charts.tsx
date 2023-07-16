@@ -41,12 +41,14 @@ function Charts({ monitoring }: Props) {
           },
         },
         cpu: {
+          total: monitoring.cpu_rata,
           data: {
             labels: monitoring.waktu_list,
             cpu: monitoring.cpu_list,
           },
         },
         ram: {
+          total: monitoring.ram_rata,
           data: {
             labels: monitoring.waktu_list,
             ram: monitoring.ram_list,
@@ -69,6 +71,7 @@ function Charts({ monitoring }: Props) {
           data: {
             labels: dates["cpu"].data.labels,
             cpu: dates["cpu"].data.cpu,
+            total: dates["cpu"].total,
           },
         },
         {
@@ -76,6 +79,7 @@ function Charts({ monitoring }: Props) {
           data: {
             labels: dates["ram"].data.labels,
             ram: dates["ram"].data.ram,
+            total: dates["ram"].total,
           },
         },
       ];
@@ -128,13 +132,13 @@ function Charts({ monitoring }: Props) {
                         ? parseFloat(tickValue)
                         : tickValue;
                     if (value < 1024) {
-                      return value + " B/s";
+                      return value + " B";
                     } else if (value < 1048576) {
-                      return (value / 1024).toFixed(1) + " KB/s";
+                      return (value / 1024).toFixed(1) + " KB";
                     } else if (value < 1073741824) {
-                      return (value / 1048576).toFixed(1) + " MB/s";
+                      return (value / 1048576).toFixed(1) + " MB";
                     } else {
-                      return (value / 1073741824).toFixed(1) + " GB/s";
+                      return (value / 1073741824).toFixed(1) + " GB";
                     }
                   } else if (selectedOption === 1 || selectedOption === 2) {
                     const value =
@@ -156,16 +160,16 @@ function Charts({ monitoring }: Props) {
 
                   if (selectedOption === 0) {
                     if (value < 1024) {
-                      return label + ": " + value + " B/s";
+                      return label + ": " + value + " B";
                     } else if (value < 1048576) {
-                      return label + ": " + (value / 1024).toFixed(1) + " KB/s";
+                      return label + ": " + (value / 1024).toFixed(1) + " KB";
                     } else if (value < 1073741824) {
                       return (
-                        label + ": " + (value / 1048576).toFixed(1) + " MB/s"
+                        label + ": " + (value / 1048576).toFixed(1) + " MB"
                       );
                     } else {
                       return (
-                        label + ": " + (value / 1073741824).toFixed(1) + " GB/s"
+                        label + ": " + (value / 1073741824).toFixed(1) + " GB"
                       );
                     }
                   } else if (selectedOption === 1 || selectedOption === 2) {
@@ -280,7 +284,7 @@ function Charts({ monitoring }: Props) {
         </div>
         <div className="flex flex-wrap items-end mb-5">
           <h4 className="text-2xl lg:text-3xl text-white font-semibold leading-tight inline-block mr-2">
-            {chartData?.[selectedOption]?.data?.total}
+            {chartData?.[selectedOption]?.data?.total || 0}
           </h4>
         </div>
         <div>
