@@ -13,14 +13,15 @@ type Props = {
 
 function Modal({ onClose }: Props) {
   const { register, handleSubmit } = useForm();
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoadingSpeed, setIsLoadingSpeed] = useState(false);
+  const [isLoadingUji, setIsLoadingUji] = useState(false);
   const [activeTab, setActiveTab] = useState("SpeedTest Internet Server");
   const [modalTitle, setModalTitle] = useState("SpeedTest Internet Server");
   const [speed, setSpeed] = useState<SpeedTest | null>(null);
   const [uji, setUji] = useState<Uji | null>(null);
 
   const onSpeed = async (data: any) => {
-    setIsLoading(true);
+    setIsLoadingSpeed(true);
     try {
       const response = await fetch(data.speed, {
         method: "GET",
@@ -31,7 +32,6 @@ function Modal({ onClose }: Props) {
 
       if (response.ok) {
         const responseData = await response.json();
-        console.log(responseData);
         const speedTests: SpeedTest = {
           speed_download: responseData.speed_download,
           speed_upload: responseData.speed_upload,
@@ -49,11 +49,11 @@ function Modal({ onClose }: Props) {
       console.error("Error:", error);
       // Lakukan penanganan kesalahan jika diperlukan
     }
-    setIsLoading(false);
+    setIsLoadingSpeed(false);
   };
 
   const onUji = async (data: any) => {
-    setIsLoading(true);
+    setIsLoadingUji(true);
     try {
       const response = await fetch(data.uji, {
         method: "GET",
@@ -81,7 +81,7 @@ function Modal({ onClose }: Props) {
       console.error("Error:", error);
       // Lakukan penanganan kesalahan jika diperlukan
     }
-    setIsLoading(false);
+    setIsLoadingUji(false);
   };
 
   const handleTabClick = (tab: any) => {
@@ -236,7 +236,7 @@ function Modal({ onClose }: Props) {
                       <div className="flex justify-center">
                         <Button
                           type="submit"
-                          isLoading={isLoading}
+                          isLoading={isLoadingSpeed}
                           style="text-gray-100 bg-green-500 rounded-lg border border-green-600 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"
                           icon={<RocketLaunchIcon className="w-8 h-10" />}
                           loadingStyle="h-10 w-8"
@@ -311,7 +311,7 @@ function Modal({ onClose }: Props) {
                       <div className="flex justify-center">
                         <Button
                           type="submit"
-                          isLoading={isLoading}
+                          isLoading={isLoadingUji}
                           style="bg-green-500 text-gray-100 bg-green-500 rounded-lg border border-green-600 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"
                           text="Evaluasi"
                           loadingStyle="h-5 w-5"
