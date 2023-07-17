@@ -20,32 +20,32 @@ const people = [
   {
     name: "Metode Httpx",
     value: "httpx",
-    link: "https://serverhttpx-1-h3876575.deta.app/httpx",
+    link: "http://127.0.0.1:8000/httpx",
   },
   {
     name: "Metode Async Httpx",
     value: "asynchttpx",
-    link: "http://127.0.0.1:8000/asynchttpx",
+    link: "http://127.0.0.1:7000/asynchttpx",
   },
   {
     name: "Metode Thread Httpx",
     value: "threadhttpx",
-    link: "http://127.0.0.1:8000/threadhttpx",
+    link: "http://127.0.0.1:6000/threadhttpx",
   },
   {
     name: "Metode Async Playwright",
     value: "playwright",
-    link: "http://127.0.0.1:8000/playwright",
+    link: "http://127.0.0.1:5000/playwright",
   },
   {
     name: "Metode Async Playwright Httpx",
     value: "playwrighthttpx",
-    link: "http://127.0.0.1:8000/playwrighthttpx",
+    link: "http://127.0.0.1:4000/playwrighthttpx",
   },
   {
     name: "Metode Thread Selenium Httpx",
     value: "seleniumhttpx",
-    link: "http://127.0.0.1:8000/seleniumhttpx",
+    link: "http://127.0.0.1:2000/seleniumhttpx",
   },
 ];
 
@@ -99,7 +99,7 @@ function Form() {
             });
             handleExportToExcel(responseData);
             onConfettiLoad();
-          }, 1000);
+          }, 2000);
         }
       } else {
         console.error("Request failed with status:", response.status);

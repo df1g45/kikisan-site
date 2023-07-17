@@ -214,19 +214,19 @@ function Modal({ onClose }: Props) {
                           <option value="http://127.0.0.1:8000/speed">
                             Server Httpx
                           </option>
-                          <option value="http://127.0.0.1:8000/speed">
+                          <option value="http://127.0.0.1:7000/speed">
                             Server Async Httpx
                           </option>
-                          <option value="http://127.0.0.1:8000/speed">
+                          <option value="http://127.0.0.1:6000/speed">
                             Server Thread Httpx
                           </option>
-                          <option value="http://127.0.0.1:8000/speed">
+                          <option value="http://127.0.0.1:5000/speed">
                             Server Async Playwright
                           </option>
-                          <option value="http://127.0.0.1:8000/speed">
+                          <option value="http://127.0.0.1:4000/speed">
                             Server Async Playwright Httpx
                           </option>
-                          <option value="http://127.0.0.1:8000/speed">
+                          <option value="http://127.0.0.1:2000/speed">
                             Server Thread Selenium Httpx
                           </option>
                         </select>
@@ -289,19 +289,19 @@ function Modal({ onClose }: Props) {
                           <option value="http://127.0.0.1:8000/uji">
                             10 Data uji ~ Server Httpx
                           </option>
-                          <option value="http://127.0.0.1:8000/uji">
+                          <option value="http://127.0.0.1:7000/uji">
                             25 Data Uji ~ Server Async Httpx
                           </option>
-                          <option value="http://127.0.0.1:8000/uji">
+                          <option value="http://127.0.0.1:6000/uji">
                             50 Data Uji ~ Server Thread Httpx
                           </option>
-                          <option value="http://127.0.0.1:8000/uji">
+                          <option value="http://127.0.0.1:5000/uji">
                             100 Data Uji ~ Server Async Playwright
                           </option>
-                          <option value="http://127.0.0.1:8000/uji">
+                          <option value="http://127.0.0.1:4000/uji">
                             200 Data Uji ~ Server Async Playwright Httpx
                           </option>
-                          <option value="http://127.0.0.1:8000/uji">
+                          <option value="http://127.0.0.1:2000/uji">
                             300 Data Uji ~ Server Thread Selenium Httpx
                           </option>
                         </select>
