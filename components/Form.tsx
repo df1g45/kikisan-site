@@ -17,7 +17,11 @@ import Script from "next/script";
 
 const pilih = [{ name: "Pilih Metode", value: "", link: "" }];
 const people = [
-  { name: "Metode Httpx", value: "httpx", link: "http://127.0.0.1:8000/httpx" },
+  {
+    name: "Metode Httpx",
+    value: "httpx",
+    link: "https://serverhttpx-1-h3876575.deta.app/httpx",
+  },
   {
     name: "Metode Async Httpx",
     value: "asynchttpx",
@@ -66,8 +70,6 @@ function Form() {
       if (response.ok) {
         const responseData = await response.json();
         if (responseData.hasil && responseData.hasil.length > 0) {
-          console.log(responseData);
-
           const monitorings: Monitoring = {
             cpu_core: responseData.cpu_core,
             cpu_list: responseData.cpu_list,
@@ -232,7 +234,6 @@ function Form() {
               />
             </div>
           </form>
-          {/* {JSON.stringify(result)} */}
         </div>
       </div>
       {result && <Charts monitoring={result} />}

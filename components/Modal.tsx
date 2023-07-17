@@ -64,7 +64,6 @@ function Modal({ onClose }: Props) {
 
       if (response.ok) {
         const responseData = await response.json();
-        console.log(responseData);
         const uji: Uji = {
           precision: responseData.precision,
           recall: responseData.recall,
@@ -94,7 +93,7 @@ function Modal({ onClose }: Props) {
       <Dialog
         open={true} // Set the open prop to manage modal visibility
         as={motion.div}
-        className="fixed inset-0 overflow-y-auto z-50"
+        className="inset-0 overflow-y-auto z-50"
         onClose={onClose}
       >
         <Dialog.Overlay
