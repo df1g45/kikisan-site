@@ -99,7 +99,7 @@ function Form() {
             });
             handleExportToExcel(responseData);
             onConfettiLoad();
-          }, 2000);
+          }, 1000);
         }
       } else {
         console.error("Request failed with status:", response.status);
