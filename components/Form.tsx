@@ -118,7 +118,7 @@ function Form() {
       <div className="min-h-screen bg-gray-100 flex justify-center items-center">
         <div className="container mx-auto bg-gray-900 rounded-lg p-14">
           <h1 className="text-center font-bold text-green-500 text-4xl">
-            Scraping yang optimal, gunakan Kikisan.site!
+            Kikisan.site
           </h1>
           <p className="mx-auto font-normal text-center text-gray-100 text-base my-6 max-w-5xl">
             Kikisan.site adalah sebuah platform yang menyediakan metode scraping
