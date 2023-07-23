@@ -20,7 +20,7 @@ const people = [
   {
     name: "Metode Httpx",
     value: "httpx",
-    link: "http://127.0.0.1:8000/httpx",
+    link: "https://0eff-2001-448a-1190-1244-c6b9-42c6-56ec-5947.ngrok-free.app/httpx",
   },
   {
     name: "Metode Async Httpx",
