@@ -54,9 +54,9 @@ export const Stats = ({ monitoring }: Props) => {
           <p className="mb-2 font-bold text-md">Info Server</p>
           <p className="text-gray-700">Type CPU : {monitoring?.cpu_type}</p>
           <p className="text-gray-700">CPU Core : {monitoring?.cpu_core}</p>
-          <p className="text-gray-700">Ram : {monitoring?.ram_total}</p>
+          <p className="text-gray-700">Ram Usage : {monitoring?.ram_total}</p>
           <p className="text-gray-700">
-            Ram Tersedia : {monitoring?.ram_tersedia}
+            Ram Available : {monitoring?.ram_tersedia}
           </p>
         </div>
       </div>
