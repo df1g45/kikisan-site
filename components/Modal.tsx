@@ -227,6 +227,9 @@ function Modal({ onClose }: Props) {
                             Server Async Playwright Httpx
                           </option>
                           <option value="http://127.0.0.1:2000/speed">
+                            Server Thread Selenium
+                          </option>
+                          <option value="http://127.0.0.1:1000/speed">
                             Server Thread Selenium Httpx
                           </option>
                         </select>
@@ -302,6 +305,9 @@ function Modal({ onClose }: Props) {
                             200 Data Uji ~ Server Async Playwright Httpx
                           </option>
                           <option value="http://127.0.0.1:2000/uji">
+                            300 Data Uji ~ Server Thread Selenium
+                          </option>
+                          <option value="http://127.0.0.1:1000/uji">
                             300 Data Uji ~ Server Thread Selenium Httpx
                           </option>
                         </select>

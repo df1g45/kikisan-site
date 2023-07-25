@@ -43,9 +43,14 @@ const people = [
     link: "http://127.0.0.1:4000/playwrighthttpx",
   },
   {
+    name: "Metode Thread Selenium",
+    value: "seleniumhttpx",
+    link: "http://127.0.0.1:2000/selenium",
+  },
+  {
     name: "Metode Thread Selenium Httpx",
     value: "seleniumhttpx",
-    link: "http://127.0.0.1:2000/seleniumhttpx",
+    link: "http://127.0.0.1:1000/seleniumhttpx",
   },
 ];
 
@@ -98,7 +103,7 @@ function Form() {
               behavior: "smooth",
             });
             handleExportToExcel(responseData);
-            onConfettiLoad();
+            // onConfettiLoad();
           }, 1000);
         }
       } else {
