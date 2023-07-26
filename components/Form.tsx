@@ -150,7 +150,7 @@ function Form() {
             site
             </motion.span>
         </h1>
-          <p className="mx-auto font-normal text-center text-gray-100 text-base my-6 max-w-3xl">
+          <p className="mx-auto font-normal text-center text-gray-100 text-base my-8 max-w-3xl">
             Dengan menggunakan Kikisan.site, Anda dapat menguji
             teknik scraping dengan tujuh metode yang telah disediakan.
             Kikisan.site mengakses dan melakukan scraping pada halaman
