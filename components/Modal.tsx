@@ -166,7 +166,7 @@ function Modal({ onClose }: Props) {
                         <div className="flex justify-between mt-2">
                           <div className="text-gray-600">
                             <p className="text-lg font-bold">
-                              {speed?.penilaian_fuzzy || "Null"}
+                              {speed?.penilaian_fuzzy || "None"}
                             </p>
                             <p className="text-sm">Rating Fuzzy</p>
                           </div>
