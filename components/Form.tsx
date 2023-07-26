@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { Fragment, useState } from "react";
 import { useForm } from "react-hook-form";
 import { Listbox, Transition } from "@headlessui/react";
@@ -14,6 +14,7 @@ import { Monitoring } from "@/types/Monitoring";
 import { Stats } from "./Stats";
 import Charts from "./Charts";
 import Script from "next/script";
+import { motion } from 'framer-motion';
 
 const pilih = [{ name: "Pilih Metode", value: "", link: "" }];
 const people = [
@@ -59,6 +60,7 @@ function Form() {
   const [isLoading, setIsLoading] = useState(false);
   const { register, handleSubmit } = useForm();
   const [result, setResult] = useState<Monitoring | null>(null);
+  const scrollRef = useRef<HTMLDivElement | null>(null);
 
   const onSubmit = async (data: any) => {
     data.metode = selected.value;
@@ -94,17 +96,10 @@ function Form() {
             ram_total: responseData.ram_total,
             waktu_list: responseData.waktu_list,
           };
-
-          setResult(monitorings);
           // Lakukan tindakan lain dengan responseData
-          setTimeout(() => {
-            window.scroll({
-              top: document.body.scrollHeight,
-              behavior: "smooth",
-            });
-            handleExportToExcel(responseData);
-            // onConfettiLoad();
-          }, 1000);
+          setResult(monitorings);
+          handleExportToExcel(responseData);
+          // onConfettiLoad();
         }
       } else {
         console.error("Request failed with status:", response.status);
@@ -117,14 +112,44 @@ function Form() {
     setIsLoading(false);
   };
 
+  useEffect(() => {
+    // Lakukan scrolling otomatis ketika komponen dipasangkan
+    if (scrollRef.current) {
+      // scrollRef.current.scrollIntoView({ behavior: 'smooth' });
+      setTimeout(() => {
+          window.scroll({
+            top: document.body.scrollHeight,
+            behavior: "smooth",
+          });
+        }, 2000);
+    }
+  }, [result]);
+
   return (
     <>
       <Script src="https://cdn.jsdelivr.net/npm/tsparticles-confetti@2.9.3/tsparticles.confetti.bundle.min.js" />
       <div className="min-h-screen bg-gray-100 flex justify-center items-center">
-        <div className="container mx-auto bg-gray-900 rounded-lg p-14">
-          <h1 className="text-center font-bold text-green-500 text-4xl">
-            Kikisan.site
-          </h1>
+        <div className="container mx-8 bg-gray-900 rounded-lg p-14">
+        <h1 className="flex items-center justify-center text-center font-bold text-green-500 text-4xl">
+      Kikisan
+      <span className="site text-gray-100">.</span>
+      <motion.span
+        className="site text-gray-100"
+        initial={{ rotate: 0, y: -50 }}
+        animate={{
+          rotate: [0, 30, 0], // Animasi perubahan posisi vertikal dari 0 ke -20 kembali ke 0
+          y: [22, 22, 22],
+        }}
+        transition={{
+          duration: 3, // Durasi animasi (dalam detik)
+          repeat: Infinity, // Mengulangi animasi secara tak terbatas
+          repeatType: "reverse", // Memutar animasi mundur setelah mencapai akhir
+          ease: "easeInOut", // Efek transisi animasi
+        }}
+      >
+            site
+            </motion.span>
+        </h1>
           <p className="mx-auto font-normal text-center text-gray-100 text-base my-6 max-w-5xl">
             Kikisan.site adalah sebuah platform yang menyediakan metode scraping
             yang efektif dan efisien untuk mengambil data produk pada platform
@@ -241,8 +266,12 @@ function Form() {
           </form>
         </div>
       </div>
-      {result && <Charts monitoring={result} />}
-      {result && <Stats monitoring={result} />}
+      {result && (
+          <div ref={scrollRef}>
+            <Charts monitoring={result} />
+            <Stats monitoring={result} />
+          </div>
+      )}
     </>
   );
 }
