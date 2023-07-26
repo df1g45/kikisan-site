@@ -152,7 +152,7 @@ function Form() {
         </h1>
           <p className="mx-auto font-normal text-center text-gray-100 text-base my-6 max-w-3xl">
             Dengan menggunakan Kikisan.site, Anda dapat menguji
-            teknik scraping dengan Tujuh metode yang telah disediakan.
+            teknik scraping dengan tujuh metode yang telah disediakan.
             Kikisan.site dapat mengakses dan melakukan scraping pada halaman
             pencarian produk, halaman detail produk, dan halaman toko pada
             platform Tokopedia. Setelah proses scraping selesai, hasilnya akan
