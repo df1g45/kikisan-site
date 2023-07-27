@@ -1,9 +1,15 @@
 import React from "react";
+import { motion} from "framer-motion";
 
 function Button({ type, isLoading, style, icon, text, loadingStyle }: Props) {
   return (
     <div>
-      <button
+      
+      <motion.button
+        whileTap={{ scale: 0.8 }}
+        whileHover={{ scale: 1.2 }}
+        onHoverStart={e => {}}
+        onHoverEnd={e => {}}
         type={type}
         className={`inline-flex items-center py-2 px-14 ml-2 text-sm font-medium ${style}`}
         disabled={isLoading}
@@ -16,7 +22,7 @@ function Button({ type, isLoading, style, icon, text, loadingStyle }: Props) {
             {text}
           </>
         )}
-      </button>
+      </motion.button>
     </div>
   );
 }

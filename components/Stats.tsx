@@ -16,7 +16,7 @@ export const Stats = ({ monitoring }: Props) => {
           </div>
           <p className="mb-2 font-bold text-md">Info Scraping</p>
           <p className="text-gray-700">Metode : {monitoring?.metode}</p>
-          <p className="text-gray-700">Pagination : {monitoring?.pagination}</p>
+          <p className="text-gray-700">Pages : {monitoring?.pagination}</p>
           <p className="text-gray-700">Keyword : {monitoring?.keyword}</p>
         </div>
         <div className="text-center">

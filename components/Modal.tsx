@@ -111,14 +111,18 @@ function Modal({ onClose }: Props) {
         >
           <div className="bg-white w-3/5 rounded-lg shadow-lg p-4 relative">
             <div className="sm:flex sm:items-start">
-              <button
+            <motion.button
+                whileTap={{ scale: 0.8 }}
+                whileHover={{ scale: 1.2 }}
+                onHoverStart={e => {}}
+                onHoverEnd={e => {}}
                 type="button"
                 className="absolute right-4 top-4 text-gray-400 hover:text-gray-500 sm:right-6 sm:top-6 md:right-6 md:top-6 lg:right-8 lg:top-6"
                 onClick={onClose}
               >
                 <span className="sr-only">Close</span>
                 <XMarkIcon className="h-6 w-6" aria-hidden="true" />
-              </button>
+              </motion.button>
               <div className="mx-auto flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-full bg-green-100 sm:mx-0 sm:h-10 sm:w-10">
                 <RocketLaunchIcon
                   className="h-6 w-6 text-green-600"
@@ -137,7 +141,8 @@ function Modal({ onClose }: Props) {
 
             <div className="mt-4 mb-4">
               <div className="flex">
-                <button
+                <motion.button
+                  whileTap={{ scale: 0.8 }}
                   onClick={() => handleTabClick("SpeedTest Internet Server")}
                   className={`w-full px-4 py-2 rounded-tl-lg rounded-tr-lg focus:outline-none ${
                     activeTab === "SpeedTest Internet Server"
@@ -146,8 +151,9 @@ function Modal({ onClose }: Props) {
                   }`}
                 >
                   SpeedTest Internet Server
-                </button>
-                <button
+                </motion.button>
+                <motion.button
+                  whileTap={{ scale: 0.8 }}
                   onClick={() => handleTabClick("Metrik Evaluasi Fuzzy")}
                   className={`w-full px-4 py-2 rounded-tr-lg rounded-tl-lg focus:outline-none ${
                     activeTab === "Metrik Evaluasi Fuzzy"
@@ -156,7 +162,7 @@ function Modal({ onClose }: Props) {
                   }`}
                 >
                   Metrik Evaluasi Fuzzy
-                </button>
+                </motion.button>
               </div>
               {activeTab === "SpeedTest Internet Server" && (
                 <form onSubmit={handleSubmit(onSpeed)}>

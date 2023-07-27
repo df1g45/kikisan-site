@@ -61,6 +61,7 @@ function Form() {
   const { register, handleSubmit } = useForm();
   const [result, setResult] = useState<Monitoring | null>(null);
   const scrollRef = useRef<HTMLDivElement | null>(null);
+  const constraintsRef = useRef(null)
 
   const onSubmit = async (data: any) => {
     data.metode = selected.value;
@@ -129,11 +130,17 @@ function Form() {
     <>
       <Script src="https://cdn.jsdelivr.net/npm/tsparticles-confetti@2.9.3/tsparticles.confetti.bundle.min.js" />
       <div className="min-h-screen bg-gray-100 flex justify-center items-center">
-        <div className="container mx-8 bg-gray-900 rounded-lg p-14">
+        <motion.div ref={constraintsRef} className="container mx-8 bg-gray-900 rounded-lg p-14">
         <h1 className="flex items-center justify-center text-center font-bold text-green-500 text-4xl">
-      Kikisan
-      <span className="site text-gray-100">.</span>
+      Kikisan.
+      {/* <span className="site text-gray-100">.</span> */}
       <motion.span
+        drag
+        whileDrag={{ scale: 1.2 }}
+        dragConstraints={constraintsRef}
+        dragElastic={0.2}
+        dragTransition={{ bounceStiffness: 600, bounceDamping: 10 }}
+        dragPropagation
         className="site text-gray-100"
         initial={{ rotate: 0, y: -50 }}
         animate={{
@@ -147,7 +154,7 @@ function Form() {
           ease: "easeInOut", // Efek transisi animasi
         }}
       >
-            site
+            .site
             </motion.span>
         </h1>
           <p className="mx-auto font-normal text-center text-gray-100 text-base my-8 max-w-3xl">
@@ -262,7 +269,7 @@ function Form() {
               />
             </div>
           </form>
-        </div>
+        </motion.div>
       </div>
       {result && (
           <div ref={scrollRef}>
