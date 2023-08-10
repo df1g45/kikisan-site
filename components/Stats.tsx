@@ -15,16 +15,17 @@ export const Stats = ({ monitoring }: Props) => {
             <ScissorsIcon className="w-8 h-8 text-deep-purple-accent-400 sm:w-10 sm:h-10" />
           </div>
           <p className="mb-2 font-bold text-md">Info Scraping</p>
-          <p className="text-gray-700">Metode : {monitoring?.metode}</p>
-          <p className="text-gray-700">Pages : {monitoring?.pagination}</p>
-          <p className="text-gray-700">Keyword : {monitoring?.keyword}</p>
+          <p className="text-gray-700">Metode : {monitoring?.metode || "None"}</p>
+          <p className="text-gray-700">Pages : {monitoring?.pagination || "None"}</p>
+          <p className="text-gray-700">Keyword : {monitoring?.keyword || "None"}</p>
+          <p className="text-gray-700">User Agent : {monitoring?.user_agent || "None"}</p>
         </div>
         <div className="text-center">
           <div className="flex items-center justify-center w-10 h-10 mx-auto mb-3 rounded-full bg-indigo-50 sm:w-12 sm:h-12">
             <DocumentChartBarIcon className="w-8 h-8 text-deep-purple-accent-400 sm:w-10 sm:h-10" />
           </div>
           <h6 className="text-4xl font-bold text-deep-purple-accent-400">
-            {monitoring?.jumlah_data}
+            {monitoring?.jumlah_data || 0}
           </h6>
           <p className="mb-2 font-bold text-md">Jumlah Data</p>
           <p className="text-gray-700">
@@ -37,7 +38,7 @@ export const Stats = ({ monitoring }: Props) => {
             <ClockIcon className="w-8 h-8 text-deep-purple-accent-400 sm:w-10 sm:h-10" />
           </div>
           <h6 className="text-4xl font-bold text-deep-purple-accent-400">
-            {monitoring?.durasi}
+            {monitoring?.durasi || "00:00:00"}
           </h6>
           <p className="mb-2 font-bold text-md">Durasi</p>
           <p className="text-gray-700">
@@ -52,11 +53,11 @@ export const Stats = ({ monitoring }: Props) => {
           </div>
 
           <p className="mb-2 font-bold text-md">Info Server</p>
-          <p className="text-gray-700">Type CPU : {monitoring?.cpu_type}</p>
-          <p className="text-gray-700">CPU Core : {monitoring?.cpu_core}</p>
-          <p className="text-gray-700">Ram Usage : {monitoring?.ram_total}</p>
+          <p className="text-gray-700">Type CPU : {monitoring?.cpu_type || "None"}</p>
+          <p className="text-gray-700">CPU Core : {monitoring?.cpu_core || "None"}</p>
+          <p className="text-gray-700">Ram Usage : {monitoring?.ram_total || "None"}</p>
           <p className="text-gray-700">
-            Ram Available : {monitoring?.ram_tersedia}
+            Ram Available : {monitoring?.ram_tersedia || "None"}
           </p>
         </div>
       </div>

@@ -21,37 +21,37 @@ const people = [
   {
     name: "Metode Httpx",
     value: "httpx",
-    link: "http://127.0.0.1:8000/httpx",
+    link: "http://127.0.0.1:10/httpx",
   },
   {
     name: "Metode Async Httpx",
     value: "asynchttpx",
-    link: "http://127.0.0.1:7000/asynchttpx",
+    link: "http://127.0.0.1:10/asynchttpx",
   },
   {
     name: "Metode Thread Httpx",
     value: "threadhttpx",
-    link: "http://127.0.0.1:6000/threadhttpx",
+    link: "http://127.0.0.1:30/threadhttpx",
   },
   {
     name: "Metode Async Playwright",
     value: "playwright",
-    link: "http://127.0.0.1:5000/playwright",
+    link: "http://127.0.0.1:40/playwright",
   },
   {
     name: "Metode Async Playwright Httpx",
     value: "playwrighthttpx",
-    link: "http://127.0.0.1:4000/playwrighthttpx",
+    link: "http://127.0.0.1:50/playwrighthttpx",
   },
   {
     name: "Metode Thread Selenium",
     value: "seleniumhttpx",
-    link: "http://127.0.0.1:2000/selenium",
+    link: "http://127.0.0.1:60/selenium",
   },
   {
     name: "Metode Thread Selenium Httpx",
     value: "seleniumhttpx",
-    link: "http://127.0.0.1:1000/seleniumhttpx",
+    link: "http://127.0.0.1:70/seleniumhttpx",
   },
 ];
 
@@ -85,6 +85,7 @@ function Form() {
             cpu_type: responseData.cpu_type,
             durasi: responseData.durasi,
             jumlah_data: responseData.jumlah_data,
+            user_agent: responseData.user_agent,
             keyword: responseData.keyword,
             metode: responseData.metode,
             pagination: responseData.pagination,
@@ -101,6 +102,7 @@ function Form() {
           setResult(monitorings);
           handleExportToExcel(responseData);
           // onConfettiLoad();
+          console.log(responseData)
         }
       } else {
         console.error("Request failed with status:", response.status);
@@ -295,8 +297,38 @@ const handleExportToExcel = (data: any) => {
 
   // Menambahkan kolom "No" di awal data
   const dataWithNo = updatedData.map((item: any) => {
-    const { no, ...rest } = item;
-    return { No: no, ...rest };
+    const { no, produk_link,
+      produk_nama,
+      produk_harga,
+      produk_terjual,
+      produk_rating,
+      produk_diskon,
+      produk_harga_sebelum_diskon,
+      produk_items,
+      produk_details,
+      produk_keterangan,
+      toko_link,
+      toko_nama,
+      toko_status,
+      toko_lokasi,
+      toko_Rating_Ulasan,
+      toko_Jam_operasi, ...rest } = item;
+    return { No: no, produk_link: produk_link,
+      produk_nama:produk_nama,
+      produk_harga:produk_harga,
+      produk_terjual:produk_terjual,
+      produk_rating:produk_rating,
+      produk_diskon:produk_diskon,
+      produk_harga_sebelum_diskon:produk_harga_sebelum_diskon,
+      produk_items:produk_items,
+      produk_details:produk_details,
+      produk_deskripsi:produk_keterangan,
+      toko_link:toko_link,
+      toko_nama:toko_nama,
+      toko_status:toko_status,
+      toko_lokasi:toko_lokasi,
+      toko_Rating_Ulasan:toko_Rating_Ulasan,
+      toko_Jam_operasional:toko_Jam_operasi, ...rest };
   });
 
   // Mengisi header dan data ke worksheet

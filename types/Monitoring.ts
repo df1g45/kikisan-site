@@ -5,6 +5,7 @@ export type Monitoring = {
   cpu_type: string;
   durasi: string;
   jumlah_data: number;
+  user_agent: string;
   keyword: string;
   metode: string;
   pagination: number;

@@ -217,7 +217,7 @@ function Modal({ onClose }: Props) {
                           className="w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:ring-1 focus:ring-blue-500"
                         >
                           <option value="">Pilih Server</option>
-                          <option value="http://127.0.0.1:8000/speed">
+                          <option value="http://127.0.0.1:10/speed">
                             Server Httpx
                           </option>
                           <option value="http://127.0.0.1:7000/speed">
@@ -229,7 +229,7 @@ function Modal({ onClose }: Props) {
                           <option value="http://127.0.0.1:5000/speed">
                             Server Async Playwright
                           </option>
-                          <option value="http://127.0.0.1:4000/speed">
+                          <option value="http://127.0.0.1:50/speed">
                             Server Async Playwright Httpx
                           </option>
                           <option value="http://127.0.0.1:2000/speed">

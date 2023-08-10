@@ -4,6 +4,9 @@ import { useEffect, useState } from "react";
 import Script from "next/script";
 import Modal from "@/components/Modal";
 import Form from "@/components/Form";
+import {
+  ScissorsIcon,
+} from "@heroicons/react/24/solid";
 
 const Index: NextPage = () => {
   const [isModalOpen, setIsModalOpen] = useState(true);
