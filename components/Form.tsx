@@ -21,37 +21,37 @@ const people = [
   {
     name: "Metode Httpx",
     value: "httpx",
-    link: "https://127e-2001-448a-1190-396-9c33-e84a-78c2-d649.ngrok-free.app/httpx",
+    link: "https://e339-2001-448a-1190-396-9c33-e84a-78c2-d649.ngrok-free.app/httpx",
   },
   {
     name: "Metode Async Httpx",
     value: "asynchttpx",
-    link: "https://127e-2001-448a-1190-396-9c33-e84a-78c2-d649.ngrok-free.app/asynchttpx",
+    link: "https://e339-2001-448a-1190-396-9c33-e84a-78c2-d649.ngrok-free.app/asynchttpx",
   },
   {
     name: "Metode Thread Httpx",
     value: "threadhttpx",
-    link: "https://127e-2001-448a-1190-396-9c33-e84a-78c2-d649.ngrok-free.app/threadhttpx",
+    link: "https://e339-2001-448a-1190-396-9c33-e84a-78c2-d649.ngrok-free.app/threadhttpx",
   },
   {
     name: "Metode Async Playwright",
     value: "playwright",
-    link: "https://127e-2001-448a-1190-396-9c33-e84a-78c2-d649.ngrok-free.app/playwright",
+    link: "https://e339-2001-448a-1190-396-9c33-e84a-78c2-d649.ngrok-free.app/playwright",
   },
   {
     name: "Metode Async Playwright Httpx",
     value: "playwrighthttpx",
-    link: "https://127e-2001-448a-1190-396-9c33-e84a-78c2-d649.ngrok-free.app/playwrighthttpx",
+    link: "https://e339-2001-448a-1190-396-9c33-e84a-78c2-d649.ngrok-free.app/playwrighthttpx",
   },
   {
     name: "Metode Thread Selenium",
     value: "seleniumhttpx",
-    link: "https://127e-2001-448a-1190-396-9c33-e84a-78c2-d649.ngrok-free.app/selenium",
+    link: "https://e339-2001-448a-1190-396-9c33-e84a-78c2-d649.ngrok-free.app/selenium",
   },
   {
     name: "Metode Thread Selenium Httpx",
     value: "seleniumhttpx",
-    link: "https://127e-2001-448a-1190-396-9c33-e84a-78c2-d649.ngrok-free.app/seleniumhttpx",
+    link: "https://e339-2001-448a-1190-396-9c33-e84a-78c2-d649.ngrok-free.app/seleniumhttpx",
   },
 ];
 
