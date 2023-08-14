@@ -217,25 +217,25 @@ function Modal({ onClose }: Props) {
                           className="w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:ring-1 focus:ring-blue-500"
                         >
                           <option value="">Pilih Server</option>
-                          <option value="https://127e-2001-448a-1190-396-9c33-e84a-78c2-d649.ngrok-free.app/speed">
+                          <option value="https://127e-2001-448a-1190-396-9c33-e84a-78c2-d649.ngrok-free.app/speedhttpx">
                             Server Httpx
                           </option>
-                          <option value="https://127e-2001-448a-1190-396-9c33-e84a-78c2-d649.ngrok-free.app/speed">
+                          <option value="https://127e-2001-448a-1190-396-9c33-e84a-78c2-d649.ngrok-free.app/speedasynchttpx">
                             Server Async Httpx
                           </option>
-                          <option value="https://127e-2001-448a-1190-396-9c33-e84a-78c2-d649.ngrok-free.app/speed">
+                          <option value="https://127e-2001-448a-1190-396-9c33-e84a-78c2-d649.ngrok-free.app/speedthreadhttpx">
                             Server Thread Httpx
                           </option>
-                          <option value="https://127e-2001-448a-1190-396-9c33-e84a-78c2-d649.ngrok-free.app/speed">
+                          <option value="https://127e-2001-448a-1190-396-9c33-e84a-78c2-d649.ngrok-free.app/speedplaywright">
                             Server Async Playwright
                           </option>
-                          <option value="https://127e-2001-448a-1190-396-9c33-e84a-78c2-d649.ngrok-free.app/speed">
+                          <option value="https://127e-2001-448a-1190-396-9c33-e84a-78c2-d649.ngrok-free.app/speedplaywrighthttpx">
                             Server Async Playwright Httpx
                           </option>
-                          <option value="https://127e-2001-448a-1190-396-9c33-e84a-78c2-d649.ngrok-free.app/speed">
+                          <option value="https://127e-2001-448a-1190-396-9c33-e84a-78c2-d649.ngrok-free.app/speedselenium">
                             Server Thread Selenium
                           </option>
-                          <option value="https://127e-2001-448a-1190-396-9c33-e84a-78c2-d649.ngrok-free.app/speed">
+                          <option value="https://127e-2001-448a-1190-396-9c33-e84a-78c2-d649.ngrok-free.app/speedseleniumhttpx">
                             Server Thread Selenium Httpx
                           </option>
                         </select>
@@ -295,25 +295,25 @@ function Modal({ onClose }: Props) {
                           className="w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:ring-1 focus:ring-blue-500"
                         >
                           <option value="">Pilih Jumlah Data Uji</option>
-                          <option value="http://127.0.0.1:8000/uji">
+                          <option value="https://127e-2001-448a-1190-396-9c33-e84a-78c2-d649.ngrok-free.app/ujihttpx">
                             10 Data uji ~ Server Httpx
                           </option>
-                          <option value="http://127.0.0.1:7000/uji">
+                          <option value="https://127e-2001-448a-1190-396-9c33-e84a-78c2-d649.ngrok-free.app/ujiasynchttpx">
                             25 Data Uji ~ Server Async Httpx
                           </option>
-                          <option value="http://127.0.0.1:6000/uji">
+                          <option value="https://127e-2001-448a-1190-396-9c33-e84a-78c2-d649.ngrok-free.app/ujithreadhttpx">
                             50 Data Uji ~ Server Thread Httpx
                           </option>
-                          <option value="http://127.0.0.1:5000/uji">
+                          <option value="https://127e-2001-448a-1190-396-9c33-e84a-78c2-d649.ngrok-free.app/ujiplaywright">
                             100 Data Uji ~ Server Async Playwright
                           </option>
-                          <option value="http://127.0.0.1:4000/uji">
+                          <option value="https://127e-2001-448a-1190-396-9c33-e84a-78c2-d649.ngrok-free.app/ujiplaywrighthttpx">
                             200 Data Uji ~ Server Async Playwright Httpx
                           </option>
-                          <option value="http://127.0.0.1:2000/uji">
+                          <option value="https://127e-2001-448a-1190-396-9c33-e84a-78c2-d649.ngrok-free.app/ujiselenium">
                             300 Data Uji ~ Server Thread Selenium
                           </option>
-                          <option value="http://127.0.0.1:1000/uji">
+                          <option value="https://127e-2001-448a-1190-396-9c33-e84a-78c2-d649.ngrok-free.app/ujiseleniumhttpx">
                             300 Data Uji ~ Server Thread Selenium Httpx
                           </option>
                         </select>
