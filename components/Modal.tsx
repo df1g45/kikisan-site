@@ -218,7 +218,7 @@ function Modal({ onClose }: Props) {
                           className="w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:ring-1 focus:ring-blue-500"
                         >
                           <option value="">Pilih Server</option>
-                          <option value=" https://e339-2001-448a-1190-396-9c33-e84a-78c2-d649.ngrok-free.app/speedhttpx">
+                          <option value="https://e339-2001-448a-1190-396-9c33-e84a-78c2-d649.ngrok-free.app/speedhttpx">
                             Server Httpx
                           </option>
                           <option value="https://127e-2001-448a-1190-396-9c33-e84a-78c2-d649.ngrok-free.app/speedasynchttpx">
