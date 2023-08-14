@@ -67,8 +67,6 @@ function Form() {
   const onSubmit = async (data: any) => {
     data.metode = selected.value;
     setIsLoading(true);
-    const controller = new AbortController();
-    const timeoutId = setTimeout(() => controller.abort(), 86400000);
     try {
       const response = await fetch(selected.link, {
         method: "POST",
@@ -76,9 +74,8 @@ function Form() {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(data),
-        signal: controller.signal,
       });
-      clearTimeout(timeoutId);
+
       if (response.ok) {
         const responseData = await response.json();
         if (responseData.hasil && responseData.hasil.length > 0) {
