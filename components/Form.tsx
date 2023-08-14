@@ -15,43 +15,44 @@ import { Stats } from "./Stats";
 import Charts from "./Charts";
 import Script from "next/script";
 import { motion } from 'framer-motion';
+import Ngrok from "@/types/Ngrok";
 
 const pilih = [{ name: "Pilih Metode", value: "", link: "" }];
 const people = [
   {
     name: "Metode Httpx",
     value: "httpx",
-    link: "https://e339-2001-448a-1190-396-9c33-e84a-78c2-d649.ngrok-free.app/httpx",
+    link: Ngrok.getUrl('httpx') + "/httpx",
   },
   {
     name: "Metode Async Httpx",
     value: "asynchttpx",
-    link: "https://e339-2001-448a-1190-396-9c33-e84a-78c2-d649.ngrok-free.app/asynchttpx",
+    link: Ngrok.getUrl('asynchttpx') + "/asynchttpx",
   },
   {
     name: "Metode Thread Httpx",
     value: "threadhttpx",
-    link: "https://e339-2001-448a-1190-396-9c33-e84a-78c2-d649.ngrok-free.app/threadhttpx",
+    link: Ngrok.getUrl('threadhttpx') + "/threadhttpx",
   },
   {
     name: "Metode Async Playwright",
     value: "playwright",
-    link: "https://e339-2001-448a-1190-396-9c33-e84a-78c2-d649.ngrok-free.app/playwright",
+    link: Ngrok.getUrl('playwright') + "/playwright",
   },
   {
     name: "Metode Async Playwright Httpx",
     value: "playwrighthttpx",
-    link: "https://e339-2001-448a-1190-396-9c33-e84a-78c2-d649.ngrok-free.app/playwrighthttpx",
+    link: Ngrok.getUrl('playwrighthttpx') + "/playwrighthttpx",
   },
   {
     name: "Metode Thread Selenium",
-    value: "seleniumhttpx",
-    link: "https://e339-2001-448a-1190-396-9c33-e84a-78c2-d649.ngrok-free.app/selenium",
+    value: "selenium",
+    link: Ngrok.getUrl('selenium') + "/selenium",
   },
   {
     name: "Metode Thread Selenium Httpx",
     value: "seleniumhttpx",
-    link: "https://e339-2001-448a-1190-396-9c33-e84a-78c2-d649.ngrok-free.app/seleniumhttpx",
+    link: Ngrok.getUrl('seleniumhttpx') + "/seleniumhttpx",
   },
 ];
 
