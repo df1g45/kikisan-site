@@ -217,25 +217,25 @@ function Modal({ onClose }: Props) {
                           className="w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:ring-1 focus:ring-blue-500"
                         >
                           <option value="">Pilih Server</option>
-                          <option value="http://127.0.0.1:10/speed">
+                          <option value="https://127e-2001-448a-1190-396-9c33-e84a-78c2-d649.ngrok-free.app/speed">
                             Server Httpx
                           </option>
-                          <option value="http://127.0.0.1:7000/speed">
+                          <option value="https://127e-2001-448a-1190-396-9c33-e84a-78c2-d649.ngrok-free.app/speed">
                             Server Async Httpx
                           </option>
-                          <option value="http://127.0.0.1:6000/speed">
+                          <option value="https://127e-2001-448a-1190-396-9c33-e84a-78c2-d649.ngrok-free.app/speed">
                             Server Thread Httpx
                           </option>
-                          <option value="http://127.0.0.1:5000/speed">
+                          <option value="https://127e-2001-448a-1190-396-9c33-e84a-78c2-d649.ngrok-free.app/speed">
                             Server Async Playwright
                           </option>
-                          <option value="http://127.0.0.1:50/speed">
+                          <option value="https://127e-2001-448a-1190-396-9c33-e84a-78c2-d649.ngrok-free.app/speed">
                             Server Async Playwright Httpx
                           </option>
-                          <option value="http://127.0.0.1:2000/speed">
+                          <option value="https://127e-2001-448a-1190-396-9c33-e84a-78c2-d649.ngrok-free.app/speed">
                             Server Thread Selenium
                           </option>
-                          <option value="http://127.0.0.1:1000/speed">
+                          <option value="https://127e-2001-448a-1190-396-9c33-e84a-78c2-d649.ngrok-free.app/speed">
                             Server Thread Selenium Httpx
                           </option>
                         </select>

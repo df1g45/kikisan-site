@@ -21,37 +21,37 @@ const people = [
   {
     name: "Metode Httpx",
     value: "httpx",
-    link: "http://127.0.0.1:10/httpx",
+    link: "https://127e-2001-448a-1190-396-9c33-e84a-78c2-d649.ngrok-free.app/httpx",
   },
   {
     name: "Metode Async Httpx",
     value: "asynchttpx",
-    link: "http://127.0.0.1:10/asynchttpx",
+    link: "https://127e-2001-448a-1190-396-9c33-e84a-78c2-d649.ngrok-free.app/asynchttpx",
   },
   {
     name: "Metode Thread Httpx",
     value: "threadhttpx",
-    link: "http://127.0.0.1:30/threadhttpx",
+    link: "https://127e-2001-448a-1190-396-9c33-e84a-78c2-d649.ngrok-free.app/threadhttpx",
   },
   {
     name: "Metode Async Playwright",
     value: "playwright",
-    link: "http://127.0.0.1:40/playwright",
+    link: "https://127e-2001-448a-1190-396-9c33-e84a-78c2-d649.ngrok-free.app/playwright",
   },
   {
     name: "Metode Async Playwright Httpx",
     value: "playwrighthttpx",
-    link: "http://127.0.0.1:50/playwrighthttpx",
+    link: "https://127e-2001-448a-1190-396-9c33-e84a-78c2-d649.ngrok-free.app/playwrighthttpx",
   },
   {
     name: "Metode Thread Selenium",
     value: "seleniumhttpx",
-    link: "http://127.0.0.1:60/selenium",
+    link: "https://127e-2001-448a-1190-396-9c33-e84a-78c2-d649.ngrok-free.app/selenium",
   },
   {
     name: "Metode Thread Selenium Httpx",
     value: "seleniumhttpx",
-    link: "http://127.0.0.1:70/seleniumhttpx",
+    link: "https://127e-2001-448a-1190-396-9c33-e84a-78c2-d649.ngrok-free.app/seleniumhttpx",
   },
 ];
 
