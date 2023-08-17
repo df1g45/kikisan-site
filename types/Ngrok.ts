@@ -5,7 +5,7 @@ class Ngrok {
         threadhttpx: "http://localhost:8000",
         playwright: "http://localhost:8000",
         playwrighthttpx: "http://localhost:8000",
-        seleniumh: "http://localhost:8000",
+        selenium: "http://localhost:8000",
         seleniumhttpx: "http://localhost:8000",
       };
   
