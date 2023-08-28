@@ -14,7 +14,7 @@ const Index: NextPage = () => {
 
   const onModalClose = () => {
     setIsModalOpen(false);
-    setIsConfettiActive(true);
+    // setIsConfettiActive(true);
   };
 
   useEffect(() => {

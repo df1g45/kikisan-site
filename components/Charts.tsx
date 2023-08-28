@@ -32,7 +32,7 @@ function Charts({ monitoring }: Props) {
   const generateData = () => {
     if (monitoring) {
       const dates = {
-        bandwidth: {
+        internet: {
           total: monitoring.paket_internet,
           data: {
             labels: monitoring.waktu_list,
@@ -58,12 +58,12 @@ function Charts({ monitoring }: Props) {
 
       const data: ChartData[] = [
         {
-          label: "Bandwidth",
+          label: "Internet",
           data: {
-            labels: dates["bandwidth"].data.labels,
-            download: dates["bandwidth"].data.download,
-            upload: dates["bandwidth"].data.upload,
-            total: dates["bandwidth"].total,
+            labels: dates["internet"].data.labels,
+            download: dates["internet"].data.download,
+            upload: dates["internet"].data.upload,
+            total: dates["internet"].total,
           },
         },
         {
