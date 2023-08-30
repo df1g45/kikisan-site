@@ -1,12 +1,12 @@
 class Ngrok {
     static urls: { [key: string]: string } = {
-        httpx: "https://293e-2001-448a-1190-102a-b979-7d84-9c8c-f0be.ngrok-free.app",
-        asynchttpx: "https://293e-2001-448a-1190-102a-b979-7d84-9c8c-f0be.ngrok-free.app",
-        threadhttpx: "https://293e-2001-448a-1190-102a-b979-7d84-9c8c-f0be.ngrok-free.app",
-        playwright: "https://293e-2001-448a-1190-102a-b979-7d84-9c8c-f0be.ngrok-free.app",
-        playwrighthttpx: "https://293e-2001-448a-1190-102a-b979-7d84-9c8c-f0be.ngrok-free.app",
-        selenium: "https://293e-2001-448a-1190-102a-b979-7d84-9c8c-f0be.ngrok-free.app",
-        seleniumhttpx: "https://293e-2001-448a-1190-102a-b979-7d84-9c8c-f0be.ngrok-free.app",
+        httpx: "https://f2f3-116-206-30-39.ngrok-free.app",
+        asynchttpx: "https://f2f3-116-206-30-39.ngrok-free.app",
+        threadhttpx: "https://f2f3-116-206-30-39.ngrok-free.app",
+        playwright: "https://f2f3-116-206-30-39.ngrok-free.app",
+        playwrighthttpx: "https://f2f3-116-206-30-39.ngrok-free.app",
+        selenium: "https://f2f3-116-206-30-39.ngrok-free.app",
+        seleniumhttpx: "https://f2f3-116-206-30-39.ngrok-free.app",
       };
   
     static getUrl(key: string): string | undefined {
